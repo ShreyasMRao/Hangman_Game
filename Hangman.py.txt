@@ -1,0 +1,54 @@
+import random
+
+lines=open("C:\/Users\/kavan\/OneDrive\/Desktop\/fruit.txt").readlines()
+
+line=lines[0]
+
+words=line.split()
+
+wrd=random.choice(words)
+length=len(wrd)
+final=('_'*length)
+print(final)
+fin=list(final)
+print(wrd)
+place=0
+list_word=list(wrd)
+
+count=7
+
+while True:
+    inpt=input('User input:')
+    string=''
+    if len(inpt)>1:
+        print('Please enter a single alphabet.')
+    else:
+        if inpt in wrd:
+            print('It is present in the word. Hurray!')
+            for i in range(len(wrd)):
+                if wrd[i]==inpt:
+                    fin.pop(i)
+                    fin.insert(i,inpt)
+            
+            for i in fin:
+                string+=i
+            print(string)
+            if '_' not in string:
+                print('Great! You guessed the word. You won!')
+                break
+        else:
+            print('Oops! It is not present in the word!')
+            count-=1
+            if count<0:
+                pass
+            else:
+                print('Number of wrong guesses left: %s'%count)
+            if count<0:
+                print('You have lost!')
+                break
+            elif count==2:
+                print('This is getting really close! :(')
+            elif count==1:
+                print('This is getting really close! :( :O')
+            elif count==0:
+                print('One more wrong guess and you could lose..!!')
